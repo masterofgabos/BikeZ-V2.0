@@ -1,0 +1,543 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/29/2022 11:51:32 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-04O0E88"
+  DTS:CreatorName="DESKTOP-04O0E88\Gabriel Florit"
+  DTS:DTSID="{562B6822-32E7-4074-9AB2-67EA6BA00EB5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{F93B831A-3D2E-40A4-85CB-C640A02F04ED}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{7FEAA72A-2569-4E56-9EE1-FDB8341F0EA2}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gabriel Florit\Desktop\BikeZ.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{8EAD55E8-11CD-4975-808A-EC6C41973F85}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2058"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Gabriel Florit\Desktop\BikeZ.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AlmacenID"
+              DTS:DTSID="{ECC6BF76-DC90-47DA-BB08-3881C5109169}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Almacen"
+              DTS:DTSID="{DC4B2E0F-4DE7-441E-9B7D-DEDA455DB585}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TerritorioID"
+              DTS:DTSID="{7D4F6DEF-9CD5-4520-BA63-EB7BD662C175}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PaisID"
+              DTS:DTSID="{DB8AB21C-B711-4AC0-8F89-3F994C3ACDA5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Pais"
+              DTS:DTSID="{BF39367E-AB0A-4284-B4D8-797BE27B6780}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Seleccionar_Territorios_Almacenes"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A7D07F5D-DCB2-4FD3-9C8C-E4EE39F39193}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Seleccionar_Territorios_Almacenes"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Excel Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Excel Destination"
+              name="Excel Destination"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Datos_Almacenes$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Excel Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].Columns[AlmacenID]"
+                      cachedDataType="i4"
+                      cachedName="AlmacenID"
+                      externalMetadataColumnId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[AlmacenID]"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[AlmacenID]" />
+                    <inputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].Columns[Almacen]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Almacen"
+                      externalMetadataColumnId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Almacen]"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[Almacen]" />
+                    <inputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].Columns[TerritorioID]"
+                      cachedDataType="i4"
+                      cachedName="TerritorioID"
+                      externalMetadataColumnId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[TerritorioID]"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[TerritorioID]" />
+                    <inputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].Columns[PaisID]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="PaisID"
+                      externalMetadataColumnId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[PaisID]"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[PaisID]" />
+                    <inputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].Columns[Pais]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Pais"
+                      externalMetadataColumnId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Pais]"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[Pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[AlmacenID]"
+                      dataType="r8"
+                      name="AlmacenID" />
+                    <externalMetadataColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Almacen]"
+                      dataType="wstr"
+                      length="255"
+                      name="Almacen" />
+                    <externalMetadataColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[TerritorioID]"
+                      dataType="r8"
+                      name="TerritorioID" />
+                    <externalMetadataColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[PaisID]"
+                      dataType="wstr"
+                      length="255"
+                      name="PaisID" />
+                    <externalMetadataColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Pais]"
+                      dataType="wstr"
+                      length="255"
+                      name="Pais" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Outputs[Excel Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Excel Destination Error Output"
+                  synchronousInputId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Seleccionar_Territorios_Almacenes"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        Almacenes.AlmacenID, Almacenes.Almacen, Territorios.TerritorioID, Paises.PaisID, Paises.Pais
+FROM            Almacenes INNER JOIN
+                         Territorios ON Almacenes.TerritorioID = Territorios.TerritorioID INNER JOIN
+                         Paises ON Territorios.PaisID = Paises.PaisID</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Connections[IDbConnection]"
+                  connectionManagerID="{64E41AED-BB76-4603-875E-2D0325A5B3E8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-04O0E88_SQLEXPRESS.BikeZ]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[AlmacenID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].ExternalColumns[AlmacenID]"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[AlmacenID]"
+                      name="AlmacenID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[Almacen]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].ExternalColumns[Almacen]"
+                      length="50"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[Almacen]"
+                      name="Almacen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[TerritorioID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].ExternalColumns[TerritorioID]"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[TerritorioID]"
+                      name="TerritorioID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[PaisID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].ExternalColumns[PaisID]"
+                      length="3"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[PaisID]"
+                      name="PaisID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[Pais]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].ExternalColumns[Pais]"
+                      length="50"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].Columns[Pais]"
+                      name="Pais"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].ExternalColumns[AlmacenID]"
+                      dataType="i4"
+                      name="AlmacenID" />
+                    <externalMetadataColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].ExternalColumns[Almacen]"
+                      dataType="wstr"
+                      length="50"
+                      name="Almacen" />
+                    <externalMetadataColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].ExternalColumns[TerritorioID]"
+                      dataType="i4"
+                      name="TerritorioID" />
+                    <externalMetadataColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].ExternalColumns[PaisID]"
+                      dataType="wstr"
+                      length="3"
+                      name="PaisID" />
+                    <externalMetadataColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET].ExternalColumns[Pais]"
+                      dataType="wstr"
+                      length="50"
+                      name="Pais" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[AlmacenID]"
+                      dataType="i4"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[AlmacenID]"
+                      name="AlmacenID" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[Almacen]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[Almacen]"
+                      name="Almacen" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[TerritorioID]"
+                      dataType="i4"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[TerritorioID]"
+                      name="TerritorioID" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[PaisID]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[PaisID]"
+                      name="PaisID" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[Pais]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[Pais]"
+                      name="Pais" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Seleccionar_Territorios_Almacenes.Paths[Salida de origen de ADO NET]"
+              endId="Package\Seleccionar_Territorios_Almacenes\Excel Destination.Inputs[Excel Destination Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes.Outputs[Salida de origen de ADO NET]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Seleccionar_Territorios_Almacenes"
+          TopLeft="13.3333333333333,10.8333333333333" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Seleccionar_Territorios_Almacenes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes"
+          TopLeft="15,16" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Seleccionar_Territorios_Almacenes\Excel Destination"
+          TopLeft="50,96" />
+        <EdgeLayout
+          Id="Package\Seleccionar_Territorios_Almacenes.Paths[Salida de origen de ADO NET]"
+          TopLeft="141.5,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.5,38"
+              Start="0,0"
+              End="-9.5,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="-4,19" />
+                  <mssgle:LineSegment
+                    End="-5.5,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.5,19"
+                    Point2="-9.5,19"
+                    Point3="-9.5,23" />
+                  <mssgle:LineSegment
+                    End="-9.5,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seleccionar_Territorios_Almacenes\Seleccionar_Territorios_Almacenes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Seleccionar_Territorios_Almacenes\Excel Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-04O0E88_SQLEXPRESS.BikeZ"
+  DTS:DTSID="{64E41AED-BB76-4603-875E-2D0325A5B3E8}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=DESKTOP-04O0E88\SQLEXPRESS;Initial Catalog=BikeZ;Integrated Security=True;Application Name=SSIS-BikeZ V2.0-{64E41AED-BB76-4603-875E-2D0325A5B3E8}DESKTOP-04O0E88\SQLEXPRESS.BikeZ;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

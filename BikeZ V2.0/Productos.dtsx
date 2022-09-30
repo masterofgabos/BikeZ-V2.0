@@ -1,0 +1,489 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/30/2022 12:45:55 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-04O0E88"
+  DTS:CreatorName="DESKTOP-04O0E88\Gabriel Florit"
+  DTS:DTSID="{E1BE9052-A7F8-486D-A3F1-297E6A489125}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{5F33D709-B347-4094-87C3-7619EA5020A6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{735A06EF-603F-4695-9202-E9B47B885F62}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gabriel Florit\Desktop\BikeZ.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{6F2EC3A3-6866-4BBD-8706-2C02053A362A}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Gabriel Florit\Desktop\BikeZProductos.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Productos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0E03563C-F286-4D2B-B0DE-FA62C2188FB3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Productos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Productos\Excel Destination"
+              componentClassID="Microsoft.ExcelDestination"
+              contactInfo="Excel Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Excel Destination"
+              name="Excel Destination"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Excel_Destination$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Productos\Excel Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Excel Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].Columns[ProductoID]"
+                      cachedDataType="i4"
+                      cachedName="ProductoID"
+                      externalMetadataColumnId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[ProductoID]"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[ProductoID]" />
+                    <inputColumn
+                      refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].Columns[Producto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Producto"
+                      externalMetadataColumnId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Producto]"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[Producto]" />
+                    <inputColumn
+                      refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Color]"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[Color]" />
+                    <inputColumn
+                      refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].Columns[CategoriaID]"
+                      cachedDataType="i4"
+                      cachedName="CategoriaID"
+                      externalMetadataColumnId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[CategoriaID]"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[CategoriaID]" />
+                    <inputColumn
+                      refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].Columns[Categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Categoria"
+                      externalMetadataColumnId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Categoria]"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[Categoria]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[ProductoID]"
+                      dataType="r8"
+                      name="ProductoID" />
+                    <externalMetadataColumn
+                      refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Producto]"
+                      dataType="nText"
+                      name="Producto" />
+                    <externalMetadataColumn
+                      refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Color]"
+                      dataType="nText"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[CategoriaID]"
+                      dataType="r8"
+                      name="CategoriaID" />
+                    <externalMetadataColumn
+                      refId="Package\Productos\Excel Destination.Inputs[Excel Destination Input].ExternalColumns[Categoria]"
+                      dataType="nText"
+                      name="Categoria" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productos\Excel Destination.Outputs[Excel Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Excel Destination Error Output"
+                  synchronousInputId="Package\Productos\Excel Destination.Inputs[Excel Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productos\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productos\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productos\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productos\Excel Destination.Outputs[Excel Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productos\Productos"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Productos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        Productos.ProductoID, Productos.Producto, Productos.Color, Productos.CategoriaID, Categorias.Categoria
+FROM            Productos INNER JOIN
+                         Categorias ON Productos.CategoriaID = Categorias.CategoriaID</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Productos\Productos.Connections[IDbConnection]"
+                  connectionManagerID="{64E41AED-BB76-4603-875E-2D0325A5B3E8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-04O0E88_SQLEXPRESS.BikeZ]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[ProductoID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].ExternalColumns[ProductoID]"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[ProductoID]"
+                      name="ProductoID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[Producto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].ExternalColumns[Producto]"
+                      length="50"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[Producto]"
+                      name="Producto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[Color]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].ExternalColumns[Color]"
+                      length="15"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[CategoriaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].ExternalColumns[CategoriaID]"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[CategoriaID]"
+                      name="CategoriaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[Categoria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].ExternalColumns[Categoria]"
+                      length="50"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].Columns[Categoria]"
+                      name="Categoria"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].ExternalColumns[ProductoID]"
+                      dataType="i4"
+                      name="ProductoID" />
+                    <externalMetadataColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].ExternalColumns[Producto]"
+                      dataType="wstr"
+                      length="50"
+                      name="Producto" />
+                    <externalMetadataColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].ExternalColumns[CategoriaID]"
+                      dataType="i4"
+                      name="CategoriaID" />
+                    <externalMetadataColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET].ExternalColumns[Categoria]"
+                      dataType="wstr"
+                      length="50"
+                      name="Categoria" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[ProductoID]"
+                      dataType="i4"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[ProductoID]"
+                      name="ProductoID" />
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[Producto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[Producto]"
+                      name="Producto" />
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[CategoriaID]"
+                      dataType="i4"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[CategoriaID]"
+                      name="CategoriaID" />
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[Categoria]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[Categoria]"
+                      name="Categoria" />
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productos\Productos.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Productos.Paths[Salida de origen de ADO NET]"
+              endId="Package\Productos\Excel Destination.Inputs[Excel Destination Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\Productos\Productos.Outputs[Salida de origen de ADO NET]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Productos"
+          TopLeft="27,16" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Productos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Productos\Productos"
+          TopLeft="16,18" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Productos\Excel Destination"
+          TopLeft="17,89" />
+        <EdgeLayout
+          Id="Package\Productos.Paths[Salida de origen de ADO NET]"
+          TopLeft="80.5,60">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5,29"
+              Start="0,0"
+              End="18.5,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5"
+                    Point2="0,14.5"
+                    Point3="4,14.5" />
+                  <mssgle:LineSegment
+                    End="14.5,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5,14.5"
+                    Point2="18.5,14.5"
+                    Point3="18.5,18.5" />
+                  <mssgle:LineSegment
+                    End="18.5,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Productos\Productos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Productos\Excel Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
